@@ -31,20 +31,12 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}"   #update here
+          image: "{{ .Values.image.repository }}"  
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8080     #update here
-              protocol: TCP           #comment it
-              #livenessProbe:           #comment it
-              #httpGet:           #comment it
-              #path: /           #comment it
-              #port: http           #comment it
-              #readinessProbe:           #comment it
-              #httpGet:           #comment it
-              #path: /           #comment it
-              #port: http           #comment it
+              containerPort: {{ .Values.service.port }} 
+              protocol: TCP           
           resources:
             {{- toYaml .Values.resources | nindent 12  }}
       {{- with .Values.nodeSelector }}

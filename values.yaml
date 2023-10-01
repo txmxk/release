@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  repository: rahulwagh17/kubernetes:jhooq-k8s-springboot #updated url
+  repository: nginx 
   pullPolicy: IfNotPresent
   tag: ""
 imagePullSecrets: []
@@ -16,7 +16,7 @@ podSecurityContext: {}
 securityContext: {}
 service:
   type: ClusterIP
-  port: 8080  #updated port
+  port: 80
 ingress:
   enabled: false
   annotations: {}
